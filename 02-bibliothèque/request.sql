@@ -90,3 +90,8 @@ SELECT titre FROM livre WHERE id_livre IN
 
 
 -- #################### JOINTURE #########################
+
+-- Exo : Qui a emprunté le livre 'Une vie' sur l'année 2014 ?
+SELECT prenom FROM abonne WHERE id_abonne IN
+(SELECT abonne_id FROM emprunt WHERE date_sortie LIKE '2014%' AND livre_id =
+(SELECT id_livre FROM livre WHERE titre = 'Une vie'));
